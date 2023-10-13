@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-violet : darkviolet;
+}
+
+.txt-violet{
+    color: var(--primary-violet);
+}
+
+.bg-violet{
+    background-color: var(--primary-violet);
+}
+
+.tdn{
+    text-decoration: none;
+}
+
+.req{
+    /* font-weight: bold; */
+    color: #c00000;
+}
+
+.shadow-medium{
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05), 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.radius-medium{
+    border-radius: 10px;
+}
+
+
+body{
+    height: 100vh;
+    background: #fcfcfc;
+
+}
+
+body::-webkit-scrollbar{
+    width: 6px;
+    background-color: #fefefe;
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: var(--primary-violet);
+    border-radius: 10px;
+}
+
+#infocontent .topcard .avatar{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 80px;
+    margin-top: -40px;
+    border:solid var(--primary-violet) 2px;
+}
+
+#infocontent .social-link-icon{
+    /* background: #333; */
+    padding: 10px;
+    border-radius: 100%;
+}
+
+#infocontent .social-link-icon :nth-last-child(){
+    color: var(--primary-violet);
+}
+
+#infocontent .social-link-icon img{
+    width: 24px;
+    height: 24px;
+}
+
+#infocontent .name{
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size:18px;
+}
+
+#infocontent .num{
+    font-size:18px;
+}
+
+
+#infocontent .topcard{
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.05), 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+#infocontent .grey-img{
+    filter: grayscale(1);
+}
+
+.onerow-info .label{
+    color: var(--primary-violet);
+    font-size: 14px;
+}
+
+.onerow-info .value{
+    font-size: 18px;
+    /* font-weight: bolder; */
+    color: #333;
+}
+
+.bottomcard{
+    background-color: #fdfdfd;
+    border-radius: 15px;
+
+}
+
+/* ======================= Clients */
+
+.detail_avatar{
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+}
