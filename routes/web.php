@@ -28,6 +28,13 @@ Route::get('/User/{id}',[FrontController::class,'showinfo'])
     
 Route::prefix('Dash')->group(function(){
 
+    Route::get('/', function () {
+        return view('back.Mycomponents.index');
+    });
+
+    Route::get('/Clients/toggle_contact/{id}/{contact}', [ClientsController::class, 'toggle_contact'])->name('Clients.toggle_contact');
+
+    Route::get('/Clients/unlink/{avatar}',[ClientsController::class, 'unlink_avatar'])->name('Clients.unlink_avatar');
     // Route::get('/Clients/toggle/{id}',[ClientsController::class, 'toggle'])->name('Clients.toggle');
     
     Route::resource('Clients',ClientsController::class);

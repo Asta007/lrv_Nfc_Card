@@ -37,12 +37,12 @@
                             <td> <a href="{{route('Reseau.toggle',$reseau->id)}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                         @endif
                         <td>
-                            <form method="POST" id="reseauDelete" action="{{route('Reseau.destroy',$reseau->id)}}" hidden>
+                            <form method="POST" id="reseauDelete{{$reseau->id}}" action="{{route('Reseau.destroy',$reseau->id)}}" hidden>
                                 @csrf
                                 @method('DELETE')
                             </form>
                             <a href="{{route('Reseau.edit',$reseau->id)}}" class="btn btn-dark"> Edit </a>
-                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('reseauDelete')"> <i class="fa fa-times"> </i> delete </a>                        </td>
+                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('reseauDelete{{$reseau->id}}')"> <i class="fa fa-times"> </i> delete </a>                        </td>
                     </tr>
             @endforeach
 

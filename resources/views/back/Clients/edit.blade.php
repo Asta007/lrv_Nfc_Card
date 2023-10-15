@@ -11,12 +11,24 @@
         <a href="{{route('Clients.index')}}" class="badge bg-light btn-link text-dark"> ← back </a>
     </div>
 
-    <form method="POST" action="{{route('Clients.update',$client->id)}}" class="col-5 mx-auto mt-2">
+    <form method="POST" action="{{route('Clients.update',$client->id)}}" class="col-5 mx-auto mt-2" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="row">
             
+            <div class="col-6 form-group text-center w-100 mb-3">
+                <label for="avatar mb-2"> <small class="text-muted"> ( click to upload avatar )</small> </label> <br>
+                <label for="avatar" style="cursor: pointer">
+                    @if (isset($client->avatar))
+                        <img id="imgholder" class="imgselecter mt-2" src="{{asset('avatars/uploaded/'.$client->avatar)}}" alt="an image" class="">
+                    @else
+                        <img id="imgholder" class="imgselecter mt-2" src="{{asset('avatars/imgholder.jpg')}}" alt="" style="">    
+                    @endif
+                </label>
+                <input type="file" name="avatar" id="avatar" class="form-control" hidden onchange="showPreview(event,'imgholder')">
+            </div>
+
             <div class="col-6">
                 <div class="form-group">
                     <label for="nom"> Nom </label>

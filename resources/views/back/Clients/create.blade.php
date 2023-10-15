@@ -9,12 +9,19 @@
         <a href="{{route('Clients.index')}}" class="badge bg-light btn-link text-dark"> ← back </a>
     </div>
 
-    <form method="POST" action="{{route('Clients.store')}}" class="col-5 mx-auto">
+    <form method="POST" action="{{route('Clients.store')}}" class="col-5 mx-auto" enctype="multipart/form-data">
         @csrf
         @method('POST')
 
         <div class="row">
-            
+            <div class="col-6 form-group text-center w-100 mb-3">
+                <label for="avatar mb-2"> <small class="text-muted"> ( click to upload avatar )</small> </label> <br>
+                <label for="avatar" style="cursor: pointer">
+                    <img id="imgholder" class="imgselecter mt-2" src="{{asset('avatars/imgholder.jpg')}}" alt="an image" class="">
+                </label>
+                <input type="file" name="avatar" id="avatar" class="form-control" hidden onchange="showPreview(event,'imgholder')">
+            </div>
+
             <div class="col-6">
                 <div class="form-group">
                     <label for="nom"> Nom <span class="req"> <span class="req"> * </span> </span> </label>

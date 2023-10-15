@@ -15,8 +15,13 @@
         <div class="col-8">
             <div class="detail row shadow-medium radius-medium p-3">
         
-                <div class="col-3">
-                    <img class="detail_avatar" src="{{asset('avatars/imgholder.jpg')}}" alt="">
+                <div class="col-3 ">
+                    @if (isset($client->avatar))
+                        <img class="detail_avatar" src="{{asset('avatars/uploaded/'.$client->avatar)}}" alt="" style="">
+                        <a href="{{route('Clients.unlink_avatar',$client->avatar)}}" class="btn btn-dark"> sup avatar </a>
+                    @else
+                        <img class="detail_avatar me-2" src="{{asset('avatars/imgholder.jpg')}}" alt="" style="">    
+                    @endif
                 </div>
         
                 <div class="col-9">
@@ -68,37 +73,37 @@
                     <tbody>
                         <tr>
                             <td> Sms </td>
-                            @if (1 == 1)
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
+                            @if ($client->sms == 1)
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'sms'])}}" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
                             @else
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'sms'])}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                             @endif
                         </tr>
                        
                         <tr>
                             <td> Appel </td>
-                            @if (1 == 1)
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
+                            @if ($client->appel == 1)
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'appel'])}}" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
                             @else
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'appel'])}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                             @endif
                         </tr>
                        
                         <tr>
                             <td> Whatsapp </td>
-                            @if (1 == 1)
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
+                            @if ($client->whatsapp == 1)
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'whatsapp'])}}" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
                             @else
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'whatsapp'])}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                             @endif
                         </tr>
                        
                         <tr>
                             <td> Telegramm </td>
-                            @if (1 == 1)
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
+                            @if ($client->telegram == 1)
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'telegram'])}}" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
                             @else
-                                <td> <a href="#" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
+                                <td> <a href="{{route('Clients.toggle_contact',['id' => $client->id, 'contact' => 'telegram'])}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                             @endif
                         </tr>
                     </tbody>

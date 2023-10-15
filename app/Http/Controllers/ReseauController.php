@@ -86,6 +86,8 @@ class ReseauController extends Controller
     public function update(Request $request, $id)
     {
         $reseau = Reseau::FindOrFail($id);
+        $reseau->ref = $request->ref;
+        $reseau->libelle = $request->libelle;
 
         // dd($reseau);
 
@@ -94,15 +96,19 @@ class ReseauController extends Controller
             $destination = public_path('icons\uploaded');
             $ext = pathinfo($img->getClientOriginalName(),PATHINFO_EXTENSION);
             $name = "uploaded_icon_".$request->ref.'.'.$ext;
+            
+            if(!empty($reseau->icon)){
+                $oldIconPath = $destination . '/' . $reseau->icon;
+                unlink($oldIconPath);
+            }
+            
             $reseau->icon = $name;
         }
        
-        $reseau->ref = $request->ref;
-        $reseau->libelle = $request->libelle;
+        
 
         if($reseau->save()){
             if(isset($request->icon)){
-                unlink($destination,$name);
                 $img->move($destination,$name);
             }
             return redirect()->route('Reseau.index');
@@ -115,9 +121,12 @@ class ReseauController extends Controller
      * @param  \App\Models\Reseau  $reseau
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reseau $reseau)
+    public function destroy(Reseau $reseau,$id)
     {
-        //
+        $reseau = Reseau::FindOrFail($id);
+        if($reseau->delete()){
+            return back();
+        }
     }
 
     public function toggle($id){

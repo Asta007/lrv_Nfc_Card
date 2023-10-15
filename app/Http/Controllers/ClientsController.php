@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -38,21 +39,38 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(trim($request->prenom," "));
+
         $client = new Clients();
         $client->nom = $request->nom;
         $client->prenom = $request-> prenom;
         $client->job = $request-> job;
         $client->dateNaiss = $request-> dateNaiss;
         $client->mail = $request-> mail;
-        $client->avatar = $request-> avatar;
+
         $client->mobil01 = $request-> mobil01;
         $client->mobil02 = $request-> mobil02;
         $client->phone = $request-> phone;
         $client->siteWeb = $request-> siteWeb;
         $client->ville = $request-> ville;
         $client->adress = $request-> adress;
-        
+    
+        $name = "";
+
+        if(isset($request->avatar)){
+           $img = $request->avatar;
+           $destination = public_path('avatars\uploaded');
+           $ext = pathinfo($img->getClientOriginalName(),PATHINFO_EXTENSION);
+           $name = "uploaded_avatar_".$request->prenom."_".$request->nom.'.'.$ext;
+           str_replace(' ','',$name);
+           $client->avatar = $name;
+        };
+
+
         if($client->save()){
+            if(isset($img)){
+                $img->move($destination,$name);
+            }
             return redirect()->route('Clients.index');
         }
         
@@ -102,13 +120,33 @@ class ClientsController extends Controller
         $client->job = $request-> job;
         $client->dateNaiss = $request-> dateNaiss;
         $client->mail = $request-> mail;
-        $client->avatar = $request-> avatar;
+
         $client->mobil01 = $request-> mobil01;
         $client->mobil02 = $request-> mobil02;
         $client->phone = $request-> phone;
         $client->siteWeb = $request-> siteWeb;
         $client->ville = $request-> ville;
         $client->adress = $request-> adress;
+
+        $name = "";
+
+        if (isset($request->avatar)) {
+            $destination = public_path("avatars/uploaded");
+
+            if (!empty($client->avatar)) {
+               $this->unlink_avatar($client->avatar);
+            }
+        
+            $img = $request->avatar;
+            $ext = $img->getClientOriginalExtension();
+            $name = "uploaded_avatar_" . $request->prenom . "_" . $request->nom . '.' . $ext;
+            
+            $img->move($destination, $name);
+            
+            // Mettez à jour le nom de l'avatar dans votre modèle de client.
+            $client->avatar = $name;
+        }
+        
         
         if($client->save()){
             return redirect()->route('Clients.index');
@@ -124,6 +162,7 @@ class ClientsController extends Controller
     public function destroy(Clients $clients,$id)
     {
         $client = Clients::FindOrFail($id);
+        // dd($client);
         if($client->delete()){
             return back();
         }
@@ -142,4 +181,24 @@ class ClientsController extends Controller
         $client->save();
         return back();
     }
+
+    public function unlink_avatar(string $avatar){
+        $client = Clients::where('avatar',$avatar)->get();
+
+        $destination = public_path("avatars/uploaded");
+        $oldAvatarPath = $destination . '/' . $avatar;
+        if (file_exists($oldAvatarPath)) {
+            unlink($oldAvatarPath);
+        }
+    }
+
+    public function toggle_contact($id, $contact){
+        $client = Clients::FindOrFail($id);
+        if($client->$contact == 1){ $client->$contact = 0 ;}
+        else{ $client->$contact = 1 ;}
+        // dd($client);
+        $client->save();
+        return back();
+    }
+
 }

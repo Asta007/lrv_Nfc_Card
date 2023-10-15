@@ -28,10 +28,10 @@ class CreateClientsTable extends Migration
             $table->string('ville')->nullable();
             $table->string('adress')->nullable();
             
-            $table->string('sms')->default(1);
-            $table->string('appel')->default(1);
-            $table->string('telegram')->default(0);
-            $table->string('whatsapp')->default(1);
+            // $table->string('sms')->default(1);
+            // $table->string('appel')->default(1);
+            // $table->string('telegram')->default(0);
+            // $table->string('whatsapp')->default(1);
 
 
             $table->integer('etat')->default(1);
