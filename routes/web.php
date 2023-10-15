@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/User/{id}',[FrontController::class,'showinfo'])
     ->name('showinfo');
     
-Route::prefix('Dash')->group(function(){
+Route::prefix('Dash')->middleware('guest')->group(function(){
 
     Route::get('/', function () {
         return view('back.Mycomponents.index');
@@ -46,5 +46,11 @@ Route::prefix('Dash')->group(function(){
     Route::resource('Reseau',ReseauController::class);
     Route::get('/reseau/toggle/{id}',[ReseauController::class, 'toggle'])->name('Reseau.toggle');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 
