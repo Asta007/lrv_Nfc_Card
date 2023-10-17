@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+REV:2023-10-16T23:54:17Z
+N;CHARSET=utf-8:Mbaye;Ababacar Asta Gueye;;;
+FN;CHARSET=utf-8:Ababacar Asta Gueye Mbaye
+TEL;Home:78456898
+ADR;WORK;POSTAL;CHARSET=utf-8:;Medina Gounass;;;;;
+LABEL;CHARSET=utf-8:street, worktown, workpostcode Belgium
+URL:somesite
+END:VCARD

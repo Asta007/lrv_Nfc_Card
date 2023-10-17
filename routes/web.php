@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ReseauController;
+use App\Http\Controllers\TestroomController;
 use App\Models\Clients;
 use App\Models\Reseau;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::get('/', function () {
 
 Route::get('/User/{id}',[FrontController::class,'showinfo'])
     ->name('showinfo');
+
+Route::get('/testroom',[TestroomController::class,'form']);
+Route::post('/testroom/store',[TestroomController::class,'store'])->name('Testroom.store');
     
 Route::prefix('Dash')->middleware('guest')->group(function(){
 
