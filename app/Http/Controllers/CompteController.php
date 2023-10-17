@@ -86,9 +86,13 @@ class CompteController extends Controller
      * @param  \App\Models\Compte  $compte
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Compte $compte)
+    public function destroy(Compte $compte, $id)
     {
-        //
+        $compte = Compte::FindOrFail($id);
+        
+        if($compte->delete()){
+            return back();
+        }
     }
 
     public function toggle($id){

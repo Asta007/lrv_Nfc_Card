@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Clients;
 use App\Models\Compte;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
+use JeroenDesloovere\VCard\VCard;
 class ClientsController extends Controller
 {
     
@@ -62,9 +61,18 @@ class ClientsController extends Controller
            $destination = public_path('avatars\uploaded');
            $ext = pathinfo($img->getClientOriginalName(),PATHINFO_EXTENSION);
            $name = "uploaded_avatar_".$request->prenom."_".$request->nom.'.'.$ext;
-           str_replace(' ','',$name);
+           $name = str_replace(' ','',$name);
            $client->avatar = $name;
         };
+
+
+        // Pour coorder l'appeleation avec le vcf
+        $nomcomplet = $client->prenom.'_'.$client->nom;
+        $vcf =   strtolower(str_replace(' ','-',$nomcomplet).'.vcf');
+        $client->vcf = $vcf;
+        
+        
+        $this->createVcard($client);
 
 
         if($client->save()){
@@ -74,7 +82,7 @@ class ClientsController extends Controller
             return redirect()->route('Clients.index');
         }
         
-        dump($client);die();
+        // dump($client);die();
 
     }
 
@@ -199,6 +207,31 @@ class ClientsController extends Controller
         // dd($client);
         $client->save();
         return back();
+    }
+
+    public function createVcard(Clients $client){
+        $vcard = new VCard();
+
+        $lastname = $client->nom;
+        $firstname = $client->prenom;
+        $additional = '';
+        $prefix = '';
+        $suffix = '';
+         // add personal data
+         $vcard->addName($lastname, $firstname, $additional, $prefix, $suffix);
+
+         // add work data
+        // $vcard->addCompany('Siesqo');
+        $vcard->addJobtitle($client->job);
+        // $vcard->addRole('Data Protection Officer');
+        $vcard->addEmail($client->mail);
+        $vcard->addPhoneNumber($client->mobil01, 'Home');
+        // $vcard->addPhoneNumber(123456789, 'WORK');
+        $vcard->addAddress(null,$client->adress,null,$client->ville);
+        $vcard->addURL($client->siteWeb);
+
+        $vcard->setSavePath(public_path('vcfcards'));
+        $vcard->save();
     }
 
 }

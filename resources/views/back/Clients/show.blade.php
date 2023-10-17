@@ -143,12 +143,12 @@
                                 @endif
     
                                 <td>
-                                    <form method="POST" id="compteDelete" action="{{route('Compte.destroy',$compte->id)}}" hidden>
+                                    <form method="POST" id="compteDelete{{$compte->id}}" action="{{route('Compte.destroy',$compte->id)}}" hidden>
                                         @csrf
                                         @method('DELETE')
                                     </form>
                                     {{-- <a href="{{route('Compte.edit',$client->id)}}" class="btn btn-dark disabled"> Edit </a> --}}
-                                    <a href="" class="btn btn-danger d-inline-block disabled" onclick="event.preventDefault(); deleteform('compteDelete')"> <i class="fa fa-times"> </i> delete </a>                        </td>
+                                    <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('compteDelete{{$compte->id}}')"> <i class="fa fa-times"> </i> delete </a>                        </td>
                             </tr>
                         @endforeach
             

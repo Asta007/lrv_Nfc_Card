@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('libpack/fa-all.css')}}">
     <link rel="stylesheet" href="{{asset('libpack/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('libpack/style.css')}}">
+    <link rel="stylesheet" href="{{asset('libpack/datatables.css')}}">
 
     <title> @yield('title') </title>
 </head>
@@ -52,27 +53,10 @@
         <p class="text-muted"> footer </p>
     </footer>
 
-    <script>
-        function deleteform(form){
-            let conf = confirm("Etes vous certain de vouloire supprimer cet element ?");
-            
-            if (conf){
-                let tmp = document.getElementById(form).submit();
-            }
-        }
-
-        function showPreview(event,elemt){
-        console.log(elemt);
-        if(event.target.files.length > 0){
-            let image = event.target.files[0];
-            let src = URL.createObjectURL(image);
-            let preview = document.getElementById(elemt);
-            console.log(src);
-            console.log(preview);
-            preview.src = src
-        }
-    }
-    </script>
+    <script src="{{asset('libpack/jquery-3.7.1.js')}}"></script>
+    <script src="{{asset('libpack/bootstrap.js')}}"></script>
+    <script src="{{asset('libpack/datatables.js')}}"></script>
+    <script src="{{asset('libpack/javascript.js')}}"></script>
     
     
 </body>

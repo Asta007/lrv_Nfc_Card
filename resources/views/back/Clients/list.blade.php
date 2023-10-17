@@ -11,7 +11,7 @@
         <a href="{{route('Clients.create')}}" class="btn btn-success"> nouveau </a>
     </div>
 
-    <table class="table  w-100">
+    <table id="table_client_list" class="table  w-100">
         <thead>
             <tr>
                 <th> Id </th>

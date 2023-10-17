@@ -26,7 +26,7 @@
 
             @foreach ($reseaux as $reseau)
                     <tr class="align-middle">
-                        <td> <img src="{{asset('icons/uploaded/'.$reseau->icon)}}" alt="" width="50px"></td>
+                        <td> <img src="{{asset('icons/uploaded/'.$reseau->icon)}}" alt="" width="30px"></td>
                         
                         <td> <a href="#"> {{$reseau->ref}} </a> </td>
                         <td> <p> {{$reseau->libelle}} </p> </td>

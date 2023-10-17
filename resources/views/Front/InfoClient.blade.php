@@ -44,32 +44,36 @@
                     </div>
                     <div class="mt-4 pb-4 mx-auto d-flex justify-content-center" style="width:70%;">
                         @if ($client->appel == 1 )
-                            <a href="tel:+221781736826" class="d-inline-block social-link-icon bg-violet me-2 ms-2" style=""> 
+                            <a href="tel:{{$client->mobil01}}" class="d-inline-block social-link-icon bg-violet me-2 ms-2" style=""> 
                                 {{-- <i class="fa-brands fa-telegram" style="font-size: 50px"> </i> --}}
                                 <img src="{{asset('icons/ico_phone.svg')}}" alt="" class="">
                             </a>
                         @endif
 
                         @if ($client->telegram == 1)
-                            <a href="https://t.me/+221781736826" class="social-link-icon d-inline-block me-2 ms-2" style="background-color: #2AABEE"> 
+                            <a href="https://t.me/{{$client->mobil01}}" class="social-link-icon d-inline-block me-2 ms-2" style="background-color: #2AABEE"> 
                                 <img src="{{asset('icons/ico_telegram.svg')}}" alt="" class="">
                             </a>
                         @endif
 
                         @if ($client->whatsapp == 1 )
                             {{-- <a href="https://wa.me/{{$client->mobil01}}" class="social-link-icon d-inline-block me-2 ms-2" style="background-color: #60D669">  --}}
-                            <a href="https://wa.me/221781736826" class="social-link-icon d-inline-block me-2 ms-2" style="background-color: #60D669"> 
+                            <a href="https://wa.me/{{$client->mobil01}}" class="social-link-icon d-inline-block me-2 ms-2" style="background-color: #60D669"> 
                                 <img src="{{asset('icons/ico_whp.svg')}}" alt="" class="">
                             </a>
                         @endif
 
                         @if ($client->sms == 1 )
-                            <a href="sms:+221781736826" class="social-link-icon d-inline-block bg-violet me-2 ms-2"> 
+                            <a href="sms:{{$client->mobil01}}" class="social-link-icon d-inline-block bg-violet me-2 ms-2"> 
                                 <img src="{{asset('icons/ico_message.svg')}}" alt="" class="">
                             </a>
                         @endif
 
                     </div>
+                </div>
+
+                <div class="savebtn text-center mt-4">
+                    <a href="{{asset('vcfcards/'.$client->vcf)}}" class="btn btn-dark">  Enregistrer le Contact </a>
                 </div>
 
                 <div class="bottomcard mt-4 p-2">
