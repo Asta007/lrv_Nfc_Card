@@ -12,19 +12,20 @@
     </div>
 
     <div class="row" style="align-items: stretch">
-        <div class="col-8">
+
+        <div class="col-11 col-lg-8 mb-3 mb-sm-0 mx-auto">
             <div class="detail row shadow-medium radius-medium p-3">
         
-                <div class="col-3 ">
+                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
                     @if (isset($client->avatar))
-                        <img class="detail_avatar" src="{{asset('avatars/uploaded/'.$client->avatar)}}" alt="" style="">
-                        <a href="{{route('Clients.unlink_avatar',$client->avatar)}}" class="btn btn-dark"> sup avatar </a>
+                        <img class="detail_avatar d-block d-md-flex mx-auto mb-2 mb-md-0" src="{{asset('avatars/uploaded/'.$client->avatar)}}" alt="" style="" >
+                        <a href="{{route('Clients.unlink_avatar',$client->avatar)}}" class="btn btn-dark d-inline-block m-0 mt-md-3"> sup avatar </a>
                     @else
                         <img class="detail_avatar me-2" src="{{asset('avatars/imgholder.jpg')}}" alt="" style="">    
                     @endif
                 </div>
         
-                <div class="col-9">
+                <div class="col-12 col-md-9">
                     <table class="table">
                         <tr>
                             <th> Nom Complet </th>
@@ -61,7 +62,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-11 col-lg-4 mx-auto">
             <div class="shadow-medium radius-medium p-3" style="height: 100%">
                 <table class="table w-100">
                     <thead>
@@ -116,13 +117,13 @@
 
     <div class="comptes mt-4 row">
 
-        <div class="col-8 p-0">
+        <div class="col-11 col-lg-8 p-0 mb-sm-3 mx-auto">
             <div class="shadow-medium radius-medium p-3">
                 <table class="table w-100">
                     <thead>
                         <tr>
                             <th> Reseau </th>
-                            <th> liens  </th>
+                            <th class="d-none d-md-table-cell"> liens  </th>
                             <th> libelle  </th>
                             <th> etat </th>
                             <th> Action </th>
@@ -133,7 +134,7 @@
                         @foreach ($comptes as $compte)
                             <tr class="align-middle">
                                 <td> {{$compte->reseau->libelle}} </a> </td>
-                                <td> <p class="m-0"> {{$compte->liens}} </p> </td>
+                                <td class="d-none d-md-table-cell"> <p class="m-0"> {{$compte->liens}} </p> </td>
                                 <td> <p class="m-0"> {{$compte->libelle}} </p> </td>
     
                                 @if ($compte->etat == 1)
@@ -157,7 +158,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-11 col-lg-4 mx-auto">
             <div class="shadow-medium radius-medium p-3">
                 <form method="POST" action="{{route('Compte.store')}}" class="p-3">
                     @csrf

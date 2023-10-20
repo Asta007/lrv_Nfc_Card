@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th> Id </th>
-                <th> Nom Complet</th>
-                <th> email </th>
+                <th> Nom</th>
+                <th class="d-none d-md-table-cell"> email </th>
                 <th> mobile </th>
-                <th> Adress </th>
+                <th class="d-none d-md-table-cell"> Adress </th>
                 <th> etat </th>
                 <th> Action </th>
             </tr>
@@ -37,22 +37,23 @@
                             
                             <a href="{{route('Clients.show',$client->id)}}"> {{$client->prenom}} </a>
                         </td>
-                        <td> <p class="m-0"> {{$client->mail}} </p> </td>
+                        <td class="d-none d-md-table-cell"> <p class="m-0"> {{$client->mail}} </p> </td>
                         <td> <p class="m-0"> {{$client->mobil01}} </p> </td>
-                        <td> <p class="m-0"> {{$client->adress}} </p> </td>
+                        <td class="d-none d-md-table-cell"> <p class="m-0"> {{$client->adress}} </p> </td>
                         @if ($client->etat == 1)
                             <td> <a href="{{route('Clients.toggle',$client->id)}}" class="d-block"> <i class="fa-solid fa-toggle-on fa-2xl" style="color:green"></i> </a> </td>
                         @else
                             <td> <a href="{{route('Clients.toggle',$client->id)}}" class="d-block"> <i class="fa-solid fa-toggle-off fa-2xl" style="color:gray"></i> </a> </td>
                         @endif
-                        <td>
+                        <td class="p-0">
                             {{-- <form method="POST" id="assuranceDelete" action="{{route('Clients.destroy',$client->id)}}" hidden> --}}
                             <form method="POST" id="assuranceDelete{{$client->id}}" action="{{route('Clients.destroy',$client->id)}}" hidden>
                                 @csrf
                                 @method('DELETE')
                             </form>
-                            <a href="{{route('Clients.edit',$client->id)}}" class="btn btn-dark"> Edit </a>
-                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('assuranceDelete{{$client->id}}')"> <i class="fa fa-times"> </i> delete </a>                        </td>
+                            <a href="{{route('Clients.edit',$client->id)}}" class="btn btn-dark"> <i class="fa fa-pencil"> </i> </a>
+                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('assuranceDelete{{$client->id}}')"> <i class="fa fa-times"> </i> </a>
+                        </td>
                     </tr>
             @endforeach
 

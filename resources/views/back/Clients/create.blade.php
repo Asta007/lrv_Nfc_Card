@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <div class="page_title mb-5 col-5 mx-auto">
+    <div class="page_title mb-5 col-sm-11 col-md-8 col-lg-5 mx-auto">
         <h4> Add Clients</h4>
         <a href="{{route('Clients.index')}}" class="badge bg-light btn-link text-dark"> ← back </a>
     </div>
 
-    <form method="POST" action="{{route('Clients.store')}}" class="col-5 mx-auto" enctype="multipart/form-data">
+    <form method="POST" action="{{route('Clients.store')}}" class="col-11 col-sm-10 col-md-8 col-lg-5 mx-auto" enctype="multipart/form-data">
         @csrf
         @method('POST')
 
