@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th> icon </th>
-                <th> Reference </th>
+                {{-- <th> Reference </th> --}}
                 <th> Libellé </th>
 
                 <th> etat </th>
@@ -28,7 +28,7 @@
                     <tr class="align-middle">
                         <td> <img src="{{asset('icons/uploaded/'.$reseau->icon)}}" alt="" width="30px"></td>
                         
-                        <td> <a href="#"> {{$reseau->ref}} </a> </td>
+                        {{-- <td> <a href="#"> {{$reseau->ref}} </a> </td> --}}
                         <td> <p> {{$reseau->libelle}} </p> </td>
                         
                         @if ($reseau->etat == 1)
@@ -41,8 +41,8 @@
                                 @csrf
                                 @method('DELETE')
                             </form>
-                            <a href="{{route('Reseau.edit',$reseau->id)}}" class="btn btn-dark"> Edit </a>
-                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('reseauDelete{{$reseau->id}}')"> <i class="fa fa-times"> </i> delete </a>                        </td>
+                            <a href="{{route('Reseau.edit',$reseau->id)}}" class="btn btn-dark"> <i class="fa fa-pencil"> </i> </a>
+                            <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('reseauDelete{{$reseau->id}}')"> <i class="fa fa-times"> </i> </a>                        </td>
                     </tr>
             @endforeach
 

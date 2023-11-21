@@ -67,7 +67,7 @@ class ClientsController extends Controller
 
 
         // Pour coorder l'appeleation avec le vcf
-        $nomcomplet = $client->prenom.'_'.$client->nom;
+        $nomcomplet = $client->prenom.'-'.$client->nom;
         $vcf =   strtolower(str_replace(' ','-',$nomcomplet).'.vcf');
         $client->vcf = $vcf;
         

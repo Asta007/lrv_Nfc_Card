@@ -74,6 +74,7 @@
 
                 <div class="savebtn text-center mt-4">
                     <a href="{{asset('vcfcards/'.$client->vcf)}}" class="btn btn-dark">  Enregistrer le Contact </a>
+                    {{-- <a href="{{$client->vcf}}" class="btn btn-dark">  Enregistrer le Contact </a> --}}
                 </div>
 
                 <div class="bottomcard mt-4 p-2">

@@ -149,7 +149,7 @@
                                         @method('DELETE')
                                     </form>
                                     {{-- <a href="{{route('Compte.edit',$client->id)}}" class="btn btn-dark disabled"> Edit </a> --}}
-                                    <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('compteDelete{{$compte->id}}')"> <i class="fa fa-times"> </i> delete </a>                        </td>
+                                    <a href="" class="btn btn-danger d-inline-block" onclick="event.preventDefault(); deleteform('compteDelete{{$compte->id}}')"> <i class="fa fa-times"> </i> </a>                        </td>
                             </tr>
                         @endforeach
             
